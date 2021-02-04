@@ -43,7 +43,7 @@ PortN_Init
     ORR R0,R0, #0x1000                  ;Performs a bitwise OR operation with the contents of R0 and 0x20 and stores it back into R0, R0 = 0x1000,since 12th bit register is for port N
     STR R0, [R1]                        ;Stores R0 contents into contents of the address located in R1,RCGCGPIO now has Ox20 stored in it 
     NOP                                 ;Waiting for GPIO Port F to be enabled
-	  NOP                                 ;Waiting for GPIO Port F to be enabled
+    NOP                                 ;Waiting for GPIO Port F to be enabled
   
    ; STEP 5
     LDR R1, =GPIO_PORTN_DIR_R           ;Load the memory address of the GPIO Port F DIR Register into register 1 (R1), R1 = 0x4005D400
