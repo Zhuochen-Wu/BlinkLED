@@ -64,17 +64,17 @@ Start
 	     BL  PortN_Init                      ;The BL instruction is like a function call 
     ;STEP 8                              		
 loop     LDR R1, =GPIO_PORTN_DATA_R          ;Load the memory addess of the GPIO Port F DATA Register into register 1 (R1), R1 = 0x4005D3FC
-	     LDR R0,[R1]                         ;Put the contents of the memory address of GPIO Port F DATA Register 0 (R0), R0 = 0x00000000
+	 LDR R0,[R1]                         ;Put the contents of the memory address of GPIO Port F DATA Register 0 (R0), R0 = 0x00000000
          ORR R0,R0, #0x1                     ;Perform a bitwise OR operation with the contents of R0 with 0x10 and put the contents into R0, R0 = 0x1, change this value can change the bit enabled on board.
          STR R0, [R1]                        ;Stores R0 contents into contents of the address located in R1; GPIO Port F Data Register now has 0x10 stored in it
          LDR R2, =0x7FFFF                    ;Load the register r2 with binary 1101111111111111111 change this value will be able to change the speed of the loop. Make it higher then slower.
 loop1    NOP
          NOP
-		 SUBS R2,R2, #0x1                     ;infinitely looping through, R2 here plays as a clock sequence.
-		 BNE loop1
+	 SUBS R2,R2, #0x1                     ;infinitely looping through
+	 BNE loop1
 		
-		 LDR R1, =GPIO_PORTN_DATA_R          ;Load the memory addess of the GPIO Port F DATA Register into register 1 (R1), R1 = 0x4005D3FC
-	     LDR R0,[R1]                         ;Put the contents of the memory address of GPIO Port F DATA Register 0 (R0), R0 = 0x00000000
+	 LDR R1, =GPIO_PORTN_DATA_R          ;Load the memory addess of the GPIO Port F DATA Register into register 1 (R1), R1 = 0x4005D3FC
+	 LDR R0,[R1]                         ;Put the contents of the memory address of GPIO Port F DATA Register 0 (R0), R0 = 0x00000000
          AND R0,R0, #0x0                     ;Perform a bitwise AND operation with the contents of R0 with 0x0 and put the contents into R0, R0 = 0x10
          STR R0, [R1]                        ;Stores R0 contents into contents of the address located in R1; GPIO Port F Data Register now has 0x10 stored in it
          LDR R2, =0x7FFFF                    ;change this value will be able to change the speed of the loop. Make it higher then slower.
